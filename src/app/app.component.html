@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<mat-toolbar class="menu" >
+    <span>
+        <button mat-icon-button (click)="toggle()">
+            <mat-icon class="menu-mat-icon">menu</mat-icon>
+        </button>
+    </span>
+    <span>Menu</span>
+    <span class="spacer"></span>
+    <app-breadcrumb></app-breadcrumb> 
+</mat-toolbar>
+
+<div class="content">
+    <mat-drawer-container class="payment-container" hasBackdrop="true">
+        <mat-drawer #drawer mode="over">
+            <app-nav></app-nav>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div class="router-content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
+
+<app-footer></app-footer>

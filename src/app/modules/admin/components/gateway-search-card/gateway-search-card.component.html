@@ -1,0 +1,10 @@
+<mat-card class="search-card">
+    <form class="search-form">
+      <mat-form-field class="full-width">
+        <mat-label>Select Payment Gateway</mat-label>
+        <mat-select disableRipple [formControl]="selected" multiple>
+          <mat-option *ngFor="let gateway of gatewayList" [value]="gateway.name" >{{ gateway.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+</mat-card>

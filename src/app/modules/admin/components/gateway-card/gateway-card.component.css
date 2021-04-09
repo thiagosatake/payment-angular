@@ -1,0 +1,21 @@
+.gateway-card {
+    float: left;
+    width: 295px;
+    height: 250px;
+    padding: 20px;
+    margin: 12px;
+}
+
+.form {
+    min-width: 150px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.my-text-area {
+    resize: none;
+}

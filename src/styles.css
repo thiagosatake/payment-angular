@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.small-box, .large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .small-box {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .large-box {
+    height: 300px;
+    width: 300px;
+  }
+
+  .msg-success {      
+    background-color: #28a745;
+    color: #fff;
+  }
+
+  .msg-error {    
+    background-color: #e35e6b;
+    color: #fff;
+  }
+
+  .msg-error button {
+    color: white;
+  }
+
+  .msg-success button {
+    color: white;
+  }

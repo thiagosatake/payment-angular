@@ -1,0 +1,14 @@
+.mat-icon {
+    height: 16px;
+    width: 10px;
+    font-size: 15px;
+}
+.mat-menu-item {
+    line-height: 30px;
+    height: 30px;
+    font-size: 12px;
+}
+
+.mat-divider{
+    margin: 10px;
+}

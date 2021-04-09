@@ -1,0 +1,8 @@
+<mat-card>
+    <mat-card-content>
+        <pre>Purchase History</pre>    
+        <ul *ngFor="let item of purchase">
+            <li><pre>{{item.orderNumber}} - {{item.orderDescription}} - {{item.amount}} - {{item.paymentStatusDescription}}</pre></li>
+        </ul>
+    </mat-card-content>
+</mat-card>

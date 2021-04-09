@@ -1,0 +1,11 @@
+<button mat-icon-button [matMenuTriggerFor]="profile" aria-label="My Profile">
+    <mat-icon>perm_identity</mat-icon>
+</button>
+<mat-menu #profile="matMenu">
+    <app-user-info></app-user-info>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="logout()">
+        <mat-icon>power_settings_new</mat-icon>
+        <a>Logoff</a>
+    </button>   
+</mat-menu>
