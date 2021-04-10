@@ -68,7 +68,7 @@ export class GatewayService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
     }).pipe(
       retry(0),
-      map((response: any) => { this.showMessage("Gateway salvo com sucesso !", false); return response }),
+      map((response: any) => { this.showMessage("Gateway has been save successfully!", false); return response }),
       catchError(e => this.errorHandler(e))
     );
   }
@@ -80,7 +80,7 @@ export class GatewayService {
       params: new HttpParams()
     }).pipe(
       retry(0),
-      map((response: any) => { this.showMessage("Gateway apagado com sucesso !", false); return response }),
+      map((response: any) => { this.showMessage("Unable do save Gateway.", false); return response }),
       catchError(e => this.errorHandler(e))
     );
   }
