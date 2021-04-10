@@ -52,12 +52,16 @@ export class GatewayCardComponent implements OnInit {
   }
 
   save(){
+    
+    this.gateway.name = this.formGroup.controls["nameFormControl"].value;
+    this.gateway.description = this.formGroup.controls["descriptionFormControl"].value;
+
     this.gatewayService.getByName(this.gateway.name).subscribe( x => 
       {
-        console.log("validating name " + x) ;
-        this.gatewayNameIsUnique = x == null;
+        
+        this.gatewayNameIsUnique = ( x == null || this.gateway.uuid == x.uuid ) ;
         if(this.gatewayNameIsUnique){
-          this.saveMode = false;
+          
           if ( this.gateway.uuid == '---' ) {
             this.gateway.uuid = undefined;
             this.gatewayService.save(this.gateway).subscribe( x => 
@@ -67,6 +71,9 @@ export class GatewayCardComponent implements OnInit {
             this.gatewayService.save(this.gateway).subscribe( x =>
               this.gateway.uuid = x );
           }
+
+          this.saveMode = false;
+          this.formGroup.disable();
         }else{
           this.formGroup.controls["nameFormControl"].setErrors({'incorrect': true});
         }

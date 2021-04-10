@@ -7,10 +7,10 @@ export const environment = {
   
   apiBaseUrl: "http://localhost:9001/payment/api",
 
-  checkoutV1Path: "/checkout/v1",
-  gatewayV1Path: "/gateways/v1",
-  paymentV1Path: "/payment/v1",
-  purchaseV1Path: "/purchase/v1"
+  checkoutV1Path: "/v1/checkout",
+  gatewayV1Path: "/v1/gateways",
+  paymentV1Path: "/v1/payment",
+  purchaseV1Path: "/v1/purchase"
   
 };
 
