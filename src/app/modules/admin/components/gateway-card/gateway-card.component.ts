@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { GatewayService } from '../../services/gateway.service';
 import { Gateway } from '../../models/gateway.model';
@@ -26,7 +27,7 @@ export class GatewayCardComponent implements OnInit {
   saveMode: boolean = false;
   gatewayNameIsUnique: boolean = true;
 
-  constructor(public gatewayService : GatewayService, public dialog: MatDialog) { }
+  constructor(public gatewayService : GatewayService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.formGroup.controls['nameFormControl'].setValue(this.gateway.name); 
@@ -105,7 +106,7 @@ export class GatewayCardComponent implements OnInit {
   }
 
   goToEdit(){
-
+    this.router.navigateByUrl("/admin/gateway/" + this.gateway.uuid);
   }
 
 }
