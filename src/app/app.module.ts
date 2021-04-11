@@ -16,7 +16,6 @@ import { PurchaseModule } from './modules/purchase/purchase.module';
 import { CheckoutComponent } from './modules/checkout/checkout.component';
 import { PaymentComponent } from './modules/payment/payment.component';
 import { PurchaseComponent } from './modules/purchase/purchase.component';
-import { AdminComponent } from './modules/admin/admin.component';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
@@ -27,9 +26,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
-import { AdminModule } from './modules/admin/admin.module';
-
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -54,8 +50,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     AppComponent,
     CheckoutComponent,
     PaymentComponent,
-    PurchaseComponent,
-    AdminComponent
+    PurchaseComponent
   ],
   imports: [
     MatToolbarModule,
@@ -70,7 +65,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    AdminModule,
     CheckoutModule,
     PaymentModule,
     PurchaseModule,

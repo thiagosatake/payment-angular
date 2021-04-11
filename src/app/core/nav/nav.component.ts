@@ -28,8 +28,12 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl("/purchase");
   }
 
-  goAdmin() {
-    this.router.navigateByUrl("/admin");
+  goAdminDashboard(){
+    this.router.navigateByUrl("/admin/dashboard");
+  }
+
+  goAdminSetup() {
+    this.router.navigateByUrl("/admin/setup");
   }
 
   goLogoff() {

@@ -4,9 +4,13 @@
     <a>Home</a>
 </button>
 <mat-divider></mat-divider>
-<button mat-menu-item (click)="goAdmin()">
+<button mat-menu-item (click)="goAdminDashboard()">
+    <mat-icon>dashboard</mat-icon>
+    <a>Dashboard</a>
+</button>
+<button mat-menu-item (click)="goAdminSetup()">
     <mat-icon>build_circle</mat-icon>
-    <a>Payment Admin</a>
+    <a>Setting Up</a>
 </button>
 <button mat-menu-item (click)="goPurchase()">
     <mat-icon>view_list</mat-icon>
