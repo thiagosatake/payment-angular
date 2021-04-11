@@ -8,7 +8,7 @@ import { MatSidenav} from '@angular/material/sidenav';
 })
 export class AppComponent {
   @ViewChild('drawer') sidenav!: MatSidenav;
-  title = 'voy-pay-angular';
+  title = 'payment-angular';
 
   toggle() {
     this.sidenav.toggle();
