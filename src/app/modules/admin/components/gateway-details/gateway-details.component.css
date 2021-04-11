@@ -1,8 +1,11 @@
+.details-header {
+    align-items: center;
+    width: 100%;
+}
+
 .gateway-details-card {
-    float: left;
-    position:relative;
-    width: 295px;
-    height: 250px;
+    float: inline;
+    height: 100px;
     padding: 20px;
     margin: 12px;
 }

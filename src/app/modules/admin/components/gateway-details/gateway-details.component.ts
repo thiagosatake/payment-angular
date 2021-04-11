@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Gateway } from '../../models/gateway.model';
 import { GatewayService } from '../../services/gateway.service';
+import { GatewayParameterCardComponent } from '../gateway-parameter-card/gateway-parameter-card.component';
+
 
 @Component({
   selector: 'app-gateway-details',
@@ -11,7 +13,7 @@ export class GatewayDetailsComponent implements OnInit {
 
   @Input()
   public uuid : String | undefined; 
-  gateway !: Gateway;
+  gateway : Gateway = { uuid : "---", name : "", description : "" } ;
 
 
   constructor(public gatewayService : GatewayService) { }
