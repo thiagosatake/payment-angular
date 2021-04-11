@@ -14,7 +14,6 @@ export class GatewayComponent implements OnInit {
 
   ngOnInit(): void {
     this.uuid = this.route.snapshot.params.uuid;
-    console.log( ">" + this.uuid + "<");
   }
 
 }

@@ -1,0 +1,8 @@
+.gateway-details-card {
+    float: left;
+    position:relative;
+    width: 295px;
+    height: 250px;
+    padding: 20px;
+    margin: 12px;
+}

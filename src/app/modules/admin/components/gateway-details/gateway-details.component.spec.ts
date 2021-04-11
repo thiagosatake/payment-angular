@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GatewayComponent } from './gateway.component';
+import { GatewayDetailsComponent } from './gateway-details.component';
 
-describe('GatewayComponent', () => {
-  let component: GatewayComponent;
-  let fixture: ComponentFixture<GatewayComponent>;
+describe('GatewayDetailsComponent', () => {
+  let component: GatewayDetailsComponent;
+  let fixture: ComponentFixture<GatewayDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GatewayComponent ]
+      declarations: [ GatewayDetailsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GatewayComponent);
+    fixture = TestBed.createComponent(GatewayDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

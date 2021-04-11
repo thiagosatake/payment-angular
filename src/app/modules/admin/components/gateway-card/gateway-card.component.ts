@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { GatewayService } from '../../services/gateway.service';
 import { Gateway } from '../../models/gateway.model';
-import { GatewayComponent } from '../gateway/gateway.component';
+import { GatewaySetupComponent } from '../gateway-setup/gateway-setup.component';
 import { DialogDeleteConfirmationComponent } from '../../../../shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 
@@ -22,7 +22,7 @@ export class GatewayCardComponent implements OnInit {
 
   @Input()
   public gateway : Gateway = { uuid : "---", name : "", description : "" } 
-  public parentRef!: GatewayComponent;
+  public parentRef!: GatewaySetupComponent;
 
   saveMode: boolean = false;
   gatewayNameIsUnique: boolean = true;

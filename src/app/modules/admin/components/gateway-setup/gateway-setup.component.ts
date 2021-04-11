@@ -4,11 +4,11 @@ import { Gateway } from '../../models/gateway.model';
 import { GatewayCardComponent } from '../gateway-card/gateway-card.component';
 
 @Component({
-  selector: 'app-gateway',
-  templateUrl: './gateway.component.html',
-  styleUrls: ['./gateway.component.css']
+  selector: 'app-gateway-setup',
+  templateUrl: './gateway-setup.component.html',
+  styleUrls: ['./gateway-setup.component.css']
 })
-export class GatewayComponent implements OnInit {
+export class GatewaySetupComponent implements OnInit {
   
   @ViewChild("viewContainerRef", { read: ViewContainerRef })
   VCR !: ViewContainerRef;
