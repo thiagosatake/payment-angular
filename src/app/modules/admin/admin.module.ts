@@ -71,7 +71,7 @@ import { GatewayParameterCardComponent } from './components/gateway-parameter-ca
     MatIconModule,
     MatAutocompleteModule
   ],
-  entryComponents: [
+  bootstrap: [
    GatewayCardComponent
   ]
 })
