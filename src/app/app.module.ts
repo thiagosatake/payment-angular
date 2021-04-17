@@ -14,6 +14,7 @@ import { PaymentModule } from './modules/payment/payment.module';
 import { PurchaseModule } from './modules/purchase/purchase.module';
 
 import { CheckoutComponent } from './modules/checkout/checkout.component';
+import { HomeComponent } from './modules/home/home.component';
 import { PaymentComponent } from './modules/payment/payment.component';
 import { PurchaseComponent } from './modules/purchase/purchase.component';
 
@@ -27,30 +28,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'http://localhost:8080/auth',
-        realm: 'my-app',
-        clientId: 'pay-angular',
-      },      
-      initOptions: {
-        onLoad: 'login-required',
-        checkLoginIframe: false
-      },
-      enableBearerInterceptor: true,
-      loadUserProfileAtStartUp: true,
-      bearerExcludedUrls: ['/assets']
-    });
-}
-
 @NgModule({
   declarations: [
     AppComponent,
     CheckoutComponent,
     PaymentComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    HomeComponent
   ],
   imports: [
     MatToolbarModule,
@@ -83,3 +67,22 @@ function initializeKeycloak(keycloak: KeycloakService) {
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'my-app',
+        clientId: 'pay-angular',
+      },      
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false
+      },
+      enableBearerInterceptor: true,
+      loadUserProfileAtStartUp: true,
+      bearerExcludedUrls: ['/assets']
+    });
+}
+

@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'payment/:checkoutId', component: PaymentComponent },
   { path: 'purchase', component: PurchaseComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'admin', loadChildren: () => import(`./modules/admin/admin.module`).then(m => m.AdminModule)  }
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)  }
 ];
 
 @NgModule({

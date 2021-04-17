@@ -70,6 +70,9 @@ import { GatewayParameterCardComponent } from './components/gateway-parameter-ca
     MatDividerModule,
     MatIconModule,
     MatAutocompleteModule
+  ],
+  entryComponents: [
+   GatewayCardComponent
   ]
 })
 export class AdminModule { }
