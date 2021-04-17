@@ -41,7 +41,7 @@ export class GatewayCardComponent implements OnInit {
     }
   }
 
-  refresh() {
+  refresh(): void {
     this.saveMode = false;
     this.formGroup.disable();
     this.gatewayService.getOne(this.gateway.uuid!).subscribe(
@@ -53,7 +53,7 @@ export class GatewayCardComponent implements OnInit {
     );
   }
 
-  save() {
+  save(): void {
 
     this.gateway.name = this.formGroup.controls["nameFormControl"].value;
     this.gateway.description = this.formGroup.controls["descriptionFormControl"].value;
@@ -76,18 +76,18 @@ export class GatewayCardComponent implements OnInit {
         this.saveMode = false;
         this.formGroup.disable();
       } else {
-        this.formGroup.controls["nameFormControl"].setErrors({ 'incorrect': true });
+        this.formGroup.controls['nameFormControl'].setErrors({ 'incorrect': true });
       }
     }
     );
   }
 
-  enable() {
+  enable(): void {
     this.saveMode = true
     this.formGroup.enable();
   }
 
-  delete() {
+  delete(): void {
     const dialogRef = this.dialog.open(DialogDeleteConfirmationComponent);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -98,14 +98,14 @@ export class GatewayCardComponent implements OnInit {
     });
   }
 
-  getNameErrorMessage() {
+  getNameErrorMessage(): string {
     if (this.formGroup.controls["nameFormControl"].hasError('required')) {
       return 'You must enter a value.';
     }
     return this.formGroup.controls["nameFormControl"].hasError('incorrect') ? "Name already in use." : ""
   }
 
-  goToEdit() {
+  goToEdit(): void {
     this.router.navigateByUrl("/admin/gateway/" + this.gateway.uuid);
   }
 
