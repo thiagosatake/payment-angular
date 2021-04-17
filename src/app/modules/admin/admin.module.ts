@@ -14,7 +14,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
-import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { PayLinkCardComponent } from './components/pay-link-card/pay-link-card.component';
 import { GatewayCardComponent } from './components/gateway-card/gateway-card.component';
