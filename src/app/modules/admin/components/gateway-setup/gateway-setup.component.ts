@@ -9,7 +9,7 @@ import { GatewayCardComponent } from '../gateway-card/gateway-card.component';
   styleUrls: ['./gateway-setup.component.css']
 })
 export class GatewaySetupComponent implements OnInit {
-  
+
   @ViewChild("viewContainerRef", { read: ViewContainerRef })
   VCR !: ViewContainerRef;
 
@@ -17,47 +17,47 @@ export class GatewaySetupComponent implements OnInit {
 
   gatewayList  !: Gateway[];
 
-  constructor(public gatewayService : GatewayService, private CFR: ComponentFactoryResolver) { }
+  constructor(public gatewayService: GatewayService, private CFR: ComponentFactoryResolver) { }
 
   ngOnInit(): void {
     this.loadGatewayCards();
   }
 
-  loadGatewayCards(){
+  loadGatewayCards() {
     this.gatewayService.get().subscribe(
-      data => { 
+      data => {
         this.VCR.clear();
         this.componentsReferences = new Array<ComponentRef<GatewayCardComponent>>();
         this.createNewGatewayCard();
         this.gatewayList = data;
         this.gatewayList.forEach(data => {
-          this.createComponent( data );
+          this.createComponent(data);
         });
       }
     );
   }
 
-  createNewGatewayCard(){
-    let newGateway : Gateway = { uuid: "---", name: "", description : ""  }
+  createNewGatewayCard() {
+    let newGateway: Gateway = { uuid: "---", name: "", description: "" }
     this.createComponent(newGateway);
   }
 
-  createComponent(gateway : Gateway) {
-    
+  createComponent(gateway: Gateway) {
+
     let componentFactory = this.CFR.resolveComponentFactory(GatewayCardComponent);
     let childComponentRef = this.VCR.createComponent(componentFactory);
 
     let childComponent = childComponentRef.instance;
-    
+
     childComponent.parentRef = this;
 
     childComponent.gateway.uuid = gateway.uuid;
     childComponent.gateway.name = gateway.name;
     childComponent.gateway.description = gateway.description;
-    
+
     // add reference for newly created component
     this.componentsReferences.push(childComponentRef);
-    
+
   }
 
   remove(gateway: Gateway) {
@@ -71,7 +71,7 @@ export class GatewaySetupComponent implements OnInit {
     this.VCR.remove(vcrIndex);
 
     // removing component from the reference list
-    this.componentsReferences.splice( vcrIndex, 1);
+    this.componentsReferences.splice(vcrIndex, 1);
   }
 
 }
