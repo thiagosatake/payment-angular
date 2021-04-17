@@ -16,12 +16,12 @@ import { DialogDeleteConfirmationComponent } from '../../../../shared/components
 export class GatewayCardComponent implements OnInit {
 
   formGroup = new FormGroup({
-    nameFormControl: new FormControl("", Validators.required),
-    descriptionFormControl: new FormControl("")
+    nameFormControl: new FormControl('', Validators.required),
+    descriptionFormControl: new FormControl('')
   });
 
   @Input()
-  public gateway: Gateway = { uuid: "---", name: "", description: "" }
+  public gateway: Gateway = { uuid: '---', name: '', description: '' }
   public parentRef!: GatewaySetupComponent;
 
   saveMode: boolean = false;
@@ -33,7 +33,7 @@ export class GatewayCardComponent implements OnInit {
     this.formGroup.controls['nameFormControl'].setValue(this.gateway.name);
     this.formGroup.controls['descriptionFormControl'].setValue(this.gateway.description);
 
-    if (this.gateway.uuid != '---') {
+    if (this.gateway.uuid !== '---') {
       this.saveMode = false;
       this.formGroup.disable();
     } else {
@@ -47,8 +47,8 @@ export class GatewayCardComponent implements OnInit {
     this.gatewayService.getOne(this.gateway.uuid!).subscribe(
       data => {
         this.gateway = data
-        this.formGroup.controls["nameFormControl"].setValue(this.gateway.name);
-        this.formGroup.controls["descriptionFormControl"].setValue(this.gateway.description);
+        this.formGroup.controls['nameFormControl'].setValue(this.gateway.name);
+        this.formGroup.controls['descriptionFormControl'].setValue(this.gateway.description);
       }
     );
   }
@@ -60,10 +60,10 @@ export class GatewayCardComponent implements OnInit {
 
     this.gatewayService.getByName(this.gateway.name).subscribe(x => {
 
-      this.gatewayNameIsUnique = (x == null || this.gateway.uuid == x.uuid);
+      this.gatewayNameIsUnique = (x == null || this.gateway.uuid === x.uuid);
       if (this.gatewayNameIsUnique) {
 
-        if (this.gateway.uuid == '---') {
+        if (this.gateway.uuid === '---') {
           this.gateway.uuid = undefined;
           this.gatewayService.save(this.gateway).subscribe(x =>
             this.parentRef.loadGatewayCards()
@@ -102,7 +102,7 @@ export class GatewayCardComponent implements OnInit {
     if (this.formGroup.controls["nameFormControl"].hasError('required')) {
       return 'You must enter a value.';
     }
-    return this.formGroup.controls["nameFormControl"].hasError('incorrect') ? "Name already in use." : ""
+    return this.formGroup.controls["nameFormControl"].hasError('incorrect') ? 'Name already in use.' : '';
   }
 
   goToEdit(): void {
