@@ -37,17 +37,17 @@ import { GatewayParameterCardComponent } from './components/gateway-parameter-ca
 
 @NgModule({
   declarations: [
-    PayLinkComponent, 
-    GatewayConfigComponent, 
-    PayLinkCardComponent, 
-    GatewayCardComponent, 
-    GatewaySetupComponent, 
-    GatewayConfigCardComponent, 
-    GatewaySearchCardComponent, 
-    DialogDeleteConfirmationComponent, 
-    DashboardComponent, 
-    SetupComponent, 
-    HomeComponent, 
+    PayLinkComponent,
+    GatewayConfigComponent,
+    PayLinkCardComponent,
+    GatewayCardComponent,
+    GatewaySetupComponent,
+    GatewayConfigCardComponent,
+    GatewaySearchCardComponent,
+    DialogDeleteConfirmationComponent,
+    DashboardComponent,
+    SetupComponent,
+    HomeComponent,
     GatewayComponent,
     GatewayDetailsComponent,
     GatewayParameterCardComponent
@@ -72,7 +72,7 @@ import { GatewayParameterCardComponent } from './components/gateway-parameter-ca
     MatAutocompleteModule
   ],
   bootstrap: [
-   GatewayCardComponent
+    GatewayCardComponent
   ]
 })
 export class AdminModule { }
