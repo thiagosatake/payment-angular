@@ -36,6 +36,7 @@ export class GatewayDetailsComponent implements OnInit {
       i => {
         this.gateway = i;
         this.VCR.clear();
+        this.componentsReferences = new Array<ComponentRef<GatewayParameterCardComponent>>();
         this.createNewGatewayDetailCard();
         if (this.gateway.configurations !== undefined) {
           this.gateway.configurations.forEach(ii => {
@@ -70,15 +71,20 @@ export class GatewayDetailsComponent implements OnInit {
   remove(gatewayParameter: GatewayParameter): void {
     if (this.VCR.length < 1) { return; }
 
-    const vcrIndex = this.componentsReferences.findIndex(
+    const componentRef = this.componentsReferences.filter(
       x => x.instance.gatewayParameter.uuid === gatewayParameter.uuid
-    );
+    )[0];
+
+    const vcrIndex: number = this.componentsReferences.indexOf(componentRef as any);
 
     // removing component from container
     this.VCR.remove(vcrIndex);
 
-    // removing component from the reference list
-    this.componentsReferences.splice(vcrIndex, 1);
+     // removing component from the list
+    this.componentsReferences = this.componentsReferences.filter(
+      x => x.instance.gatewayParameter.uuid !== gatewayParameter.uuid
+    );
+
   }
 
 }

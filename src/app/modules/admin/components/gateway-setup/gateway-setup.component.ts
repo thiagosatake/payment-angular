@@ -62,15 +62,19 @@ export class GatewaySetupComponent implements OnInit {
   remove(gateway: Gateway): void {
     if (this.VCR.length < 1) { return; }
 
-    const vcrIndex = this.componentsReferences.findIndex(
+    const componentRef = this.componentsReferences.filter(
       x => x.instance.gateway.uuid === gateway.uuid
-    );
+    )[0];
+
+    const vcrIndex: number = this.componentsReferences.indexOf(componentRef as any);
 
     // removing component from container
     this.VCR.remove(vcrIndex);
 
-    // removing component from the reference list
-    this.componentsReferences.splice(vcrIndex, 1);
+     // removing component from the list
+    this.componentsReferences = this.componentsReferences.filter(
+      x => x.instance.gateway.uuid !== gateway.uuid
+    );
   }
 
 }

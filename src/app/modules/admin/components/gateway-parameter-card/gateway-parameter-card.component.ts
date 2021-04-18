@@ -31,7 +31,7 @@ export class GatewayParameterCardComponent implements OnInit {
     this.formGroup.controls.keyFormControl.setValue(this.gatewayParameter.key);
     this.formGroup.controls.valueFormControl.setValue(this.gatewayParameter.value);
 
-    if (this.gatewayParameter.key !== '') {
+    if (this.gatewayParameter.uuid !== '---') {
       this.saveMode = false;
       this.formGroup.disable();
     } else {
