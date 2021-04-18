@@ -69,7 +69,8 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   bootstrap: [
     GatewayCardComponent,
-    GatewayParameterCardComponent
+    GatewayParameterCardComponent,
+    DialogDeleteConfirmationComponent
   ]
 })
 export class AdminModule { }

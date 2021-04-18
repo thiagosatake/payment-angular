@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GatewayComponent implements OnInit {
 
-  uuid : String = "";
+  uuid = '';
 
   constructor(private route: ActivatedRoute) { }
 

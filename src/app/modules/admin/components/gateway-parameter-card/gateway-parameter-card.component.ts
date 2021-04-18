@@ -4,7 +4,7 @@ import { GatewayParameter } from '../../models/gateway-parameter.model';
 import { GatewayService } from '../../services/gateway.service';
 import { GatewayDetailsComponent } from '../gateway-details/gateway-details.component';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogDeleteConfirmationComponent } from 'src/app/shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
+import { DialogDeleteConfirmationComponent } from '../../../../shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 @Component({
   selector: 'app-gateway-parameter-card',
