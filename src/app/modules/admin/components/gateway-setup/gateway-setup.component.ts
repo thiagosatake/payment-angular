@@ -10,10 +10,10 @@ import { GatewayCardComponent } from '../gateway-card/gateway-card.component';
 })
 export class GatewaySetupComponent implements OnInit {
 
-  @ViewChild("viewContainerRef", { read: ViewContainerRef })
+  @ViewChild('viewContainerRef', { read: ViewContainerRef })
   VCR !: ViewContainerRef;
 
-  componentsReferences = Array<ComponentRef<GatewayCardComponent>>()
+  componentsReferences = Array<ComponentRef<GatewayCardComponent>>();
 
   gatewayList  !: Gateway[];
 
@@ -23,31 +23,30 @@ export class GatewaySetupComponent implements OnInit {
     this.loadGatewayCards();
   }
 
-  loadGatewayCards() {
+  loadGatewayCards(): void {
     this.gatewayService.get().subscribe(
       data => {
         this.VCR.clear();
         this.componentsReferences = new Array<ComponentRef<GatewayCardComponent>>();
         this.createNewGatewayCard();
         this.gatewayList = data;
-        this.gatewayList.forEach(data => {
-          this.createComponent(data);
+        this.gatewayList.forEach( i => {
+          this.createComponent(i);
         });
       }
     );
   }
 
-  createNewGatewayCard() {
-    let newGateway: Gateway = { uuid: "---", name: "", description: "" }
+  createNewGatewayCard(): void {
+    const newGateway: Gateway = { uuid: '---', name: '', description: '' };
     this.createComponent(newGateway);
   }
 
-  createComponent(gateway: Gateway) {
+  createComponent(gateway: Gateway): void {
+    const componentFactory = this.CFR.resolveComponentFactory(GatewayCardComponent);
+    const childComponentRef = this.VCR.createComponent(componentFactory);
 
-    let componentFactory = this.CFR.resolveComponentFactory(GatewayCardComponent);
-    let childComponentRef = this.VCR.createComponent(componentFactory);
-
-    let childComponent = childComponentRef.instance;
+    const childComponent = childComponentRef.instance;
 
     childComponent.parentRef = this;
 
@@ -60,11 +59,11 @@ export class GatewaySetupComponent implements OnInit {
 
   }
 
-  remove(gateway: Gateway) {
-    if (this.VCR.length < 1) return;
+  remove(gateway: Gateway): void {
+    if (this.VCR.length < 1) { return; }
 
-    let vcrIndex = this.componentsReferences.findIndex(
-      x => x.instance.gateway.uuid == gateway.uuid
+    const vcrIndex = this.componentsReferences.findIndex(
+      x => x.instance.gateway.uuid === gateway.uuid
     );
 
     // removing component from container

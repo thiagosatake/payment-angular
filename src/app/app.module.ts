@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 
 import { CoreModule } from './core/core.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
-import { PaymentModule } from './modules/payment/payment.module'; 
+import { PaymentModule } from './modules/payment/payment.module';
 import { PurchaseModule } from './modules/purchase/purchase.module';
 
 import { CheckoutComponent } from './modules/checkout/checkout.component';

@@ -25,6 +25,7 @@ import { DialogDeleteConfirmationComponent } from '../../shared/components/dialo
 import { GatewayDetailsComponent } from './components/gateway-details/gateway-details.component';
 import { PayLinkComponent } from './components/pay-link/pay-link.component';
 import { GatewayConfigComponent } from './components/gateway-config/gateway-config.component';
+import { GatewayParameterCardComponent } from './components/gateway-parameter-card/gateway-parameter-card.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
@@ -32,7 +33,6 @@ import { GatewayComponent } from './pages/gateway/gateway.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { SetupComponent } from './pages/setup/setup.component';
 import { HomeComponent } from './pages/home/home.component';
-import { GatewayParameterCardComponent } from './components/gateway-parameter-card/gateway-parameter-card.component';
 
 
 @NgModule({
@@ -72,7 +72,8 @@ import { GatewayParameterCardComponent } from './components/gateway-parameter-ca
     MatAutocompleteModule
   ],
   bootstrap: [
-    GatewayCardComponent
+    GatewayCardComponent,
+    GatewayParameterCardComponent
   ]
 })
 export class AdminModule { }

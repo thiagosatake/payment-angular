@@ -1,4 +1,4 @@
 export interface GatewayParameter {
-  name: string,
-  value: string
-};
+  key: string;
+  value: string;
+}

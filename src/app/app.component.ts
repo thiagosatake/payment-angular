@@ -10,8 +10,8 @@ export class AppComponent {
   @ViewChild('drawer') sidenav!: MatSidenav;
   title = 'payment-angular';
 
-  toggle() {
+  toggle(): void {
     this.sidenav.toggle();
   }
-  
+
 }

@@ -24,8 +24,8 @@ export class GatewayCardComponent implements OnInit {
   public gateway: Gateway = { uuid: '---', name: '', description: '' }
   public parentRef!: GatewaySetupComponent;
 
-  saveMode: boolean = false;
-  gatewayNameIsUnique: boolean = true;
+  saveMode = false;
+  gatewayNameIsUnique = true;
 
   constructor(public gatewayService: GatewayService, public dialog: MatDialog, private router: Router) { }
 

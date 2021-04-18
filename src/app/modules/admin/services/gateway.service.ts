@@ -40,7 +40,7 @@ export class GatewayService {
     );
   }
 
-  getByName(name: String): Observable<Gateway> {
+  getByName(name: string): Observable<Gateway> {
     return this.http.get(this.baseGatewayUrl + "/name/" + name, {
       headers: new HttpHeaders(),
       params: new HttpParams()
@@ -51,8 +51,19 @@ export class GatewayService {
     );
   }
 
-  getOne(uuid: String): Observable<Gateway> {
+  getOne(uuid: string): Observable<Gateway> {
     return this.http.get(this.baseGatewayUrl + "/" + uuid, {
+      headers: new HttpHeaders(),
+      params: new HttpParams()
+    }).pipe(
+      retry(0),
+      map((response: any) => { return response }),
+      catchError(e => this.errorHandler(e))
+    );
+  }
+
+  getDetails(uuid: string): Observable<Gateway> {
+    return this.http.get(this.baseGatewayUrl + '/details/' + uuid, {
       headers: new HttpHeaders(),
       params: new HttpParams()
     }).pipe(
