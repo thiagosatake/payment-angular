@@ -1,8 +1,12 @@
 .gateway-parameter-card {
     float: left;
     position:relative;
-    width: 654px;
-    height: 30px;
+    width: 295px;
+    height: 200px;
     padding: 20px;
     margin: 12px;
+}
+
+.full-width {
+    width: 100%;
 }

@@ -35,7 +35,6 @@ export class GatewayDetailsComponent implements OnInit {
     this.gatewayService.getDetails(this.uuid).subscribe(
       i => {
         this.gateway = i;
-        console.log( JSON.stringify(i) );
         this.VCR.clear();
         this.createNewGatewayDetailCard();
         if (this.gateway.configurations !== undefined) {

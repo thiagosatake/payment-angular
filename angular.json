@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "voy-pay-angular": {
+    "payment-angular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -69,18 +69,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "voy-pay-angular:build"
+            "browserTarget": "payment-angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "voy-pay-angular:build:production"
+              "browserTarget": "payment-angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "voy-pay-angular:build"
+            "browserTarget": "payment-angular:build"
           }
         },
         "test": {
@@ -119,18 +119,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "voy-pay-angular:serve"
+            "devServerTarget": "payment-angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "voy-pay-angular:serve:production"
+              "devServerTarget": "payment-angular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "voy-pay-angular",
+  "defaultProject": "payment-angular",
   "cli": {
     "analytics": "6c06fdb9-8d03-4db8-87dd-fbc2517873a6"
   }

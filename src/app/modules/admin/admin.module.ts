@@ -19,12 +19,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { PayLinkCardComponent } from './components/pay-link-card/pay-link-card.component';
 import { GatewayCardComponent } from './components/gateway-card/gateway-card.component';
 import { GatewaySetupComponent } from './components/gateway-setup/gateway-setup.component';
-import { GatewayConfigCardComponent } from './components/gateway-config-card/gateway-config-card.component';
 import { GatewaySearchCardComponent } from './components/gateway-search-card/gateway-search-card.component';
 import { DialogDeleteConfirmationComponent } from '../../shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
 import { GatewayDetailsComponent } from './components/gateway-details/gateway-details.component';
 import { PayLinkComponent } from './components/pay-link/pay-link.component';
-import { GatewayConfigComponent } from './components/gateway-config/gateway-config.component';
 import { GatewayParameterCardComponent } from './components/gateway-parameter-card/gateway-parameter-card.component';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -38,11 +36,9 @@ import { HomeComponent } from './pages/home/home.component';
 @NgModule({
   declarations: [
     PayLinkComponent,
-    GatewayConfigComponent,
     PayLinkCardComponent,
     GatewayCardComponent,
     GatewaySetupComponent,
-    GatewayConfigCardComponent,
     GatewaySearchCardComponent,
     DialogDeleteConfirmationComponent,
     DashboardComponent,

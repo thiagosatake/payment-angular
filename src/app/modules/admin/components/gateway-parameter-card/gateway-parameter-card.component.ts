@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { GatewayParameter } from '../../models/gateway-parameter.model';
 import { GatewayService } from '../../services/gateway.service';
 import { GatewayDetailsComponent } from '../gateway-details/gateway-details.component';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogDeleteConfirmationComponent } from 'src/app/shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
 
 @Component({
   selector: 'app-gateway-parameter-card',
@@ -10,14 +13,62 @@ import { GatewayDetailsComponent } from '../gateway-details/gateway-details.comp
 })
 export class GatewayParameterCardComponent implements OnInit {
 
+  formGroup = new FormGroup({
+    keyFormControl: new FormControl('', Validators.required),
+    valueFormControl: new FormControl('', Validators.required)
+  });
+
   @Input()
   public gatewayParameter: GatewayParameter = { key: '', value: ''};
   public parentRef!: GatewayDetailsComponent;
 
-  constructor(public gatewayService: GatewayService) { }
+  saveMode = false;
+  keyIsUnique = true;
+
+  constructor(public gatewayService: GatewayService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.log( JSON.stringify( this.gatewayParameter ) );
+    this.formGroup.controls['keyFormControl'].setValue(this.gatewayParameter.key);
+    this.formGroup.controls['valueFormControl'].setValue(this.gatewayParameter.value);
+  
+  }
+
+  refresh(): void {
+    this.saveMode = false;
+    this.formGroup.disable();
+  
+  }
+
+  save(): void {
+
+    this.gatewayParameter.key = this.formGroup.controls["keyFormControl"].value;
+    this.gatewayParameter.value = this.formGroup.controls["valueFormControl"].value;
+
+  }
+
+  enable(): void {
+    this.saveMode = true
+    this.formGroup.enable();
+  
+  }
+
+  delete(): void {
+    const dialogRef = this.dialog.open(DialogDeleteConfirmationComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
+  getKeyErrorMessage(): string {
+    if (this.formGroup.controls["keyFormControl"].hasError('required')) {
+      return 'You must enter a value.';
+    }
+    return this.formGroup.controls["keyFormControl"].hasError('incorrect') ? 'Name already in use.' : '';
+  }
+
+  getValueErrorMessage(): string {
+    return this.formGroup.controls["valueFormControl"].hasError('required') ? 'You must enter a value.' : '';
   }
 
 }
