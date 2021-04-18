@@ -21,7 +21,7 @@ export class GatewayCardComponent implements OnInit {
   });
 
   @Input()
-  public gateway: Gateway = { uuid: '---', name: '', description: '' }
+  public gateway: Gateway = { uuid: '---', name: '', description: '' };
   public parentRef!: GatewaySetupComponent;
 
   saveMode = false;
@@ -30,8 +30,8 @@ export class GatewayCardComponent implements OnInit {
   constructor(public gatewayService: GatewayService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
-    this.formGroup.controls['nameFormControl'].setValue(this.gateway.name);
-    this.formGroup.controls['descriptionFormControl'].setValue(this.gateway.description);
+    this.formGroup.controls.nameFormControl.setValue(this.gateway.name);
+    this.formGroup.controls.descriptionFormControl.setValue(this.gateway.description);
 
     if (this.gateway.uuid !== '---') {
       this.saveMode = false;
@@ -44,19 +44,21 @@ export class GatewayCardComponent implements OnInit {
   refresh(): void {
     this.saveMode = false;
     this.formGroup.disable();
-    this.gatewayService.getOne(this.gateway.uuid!).subscribe(
-      data => {
-        this.gateway = data
-        this.formGroup.controls['nameFormControl'].setValue(this.gateway.name);
-        this.formGroup.controls['descriptionFormControl'].setValue(this.gateway.description);
-      }
-    );
+    if ( this.gateway.uuid !== undefined ){
+      this.gatewayService.getOne(this.gateway.uuid).subscribe(
+        data => {
+          this.gateway = data;
+          this.formGroup.controls.nameFormControl.setValue(this.gateway.name);
+          this.formGroup.controls.descriptionFormControl.setValue(this.gateway.description);
+        }
+      );
+    }
   }
 
   save(): void {
 
-    this.gateway.name = this.formGroup.controls["nameFormControl"].value;
-    this.gateway.description = this.formGroup.controls["descriptionFormControl"].value;
+    this.gateway.name = this.formGroup.controls.nameFormControl.value;
+    this.gateway.description = this.formGroup.controls.descriptionFormControl.value;
 
     this.gatewayService.getByName(this.gateway.name).subscribe(x => {
 
@@ -65,25 +67,25 @@ export class GatewayCardComponent implements OnInit {
 
         if (this.gateway.uuid === '---') {
           this.gateway.uuid = undefined;
-          this.gatewayService.save(this.gateway).subscribe(x =>
+          this.gatewayService.save(this.gateway).subscribe( () =>
             this.parentRef.loadGatewayCards()
           );
         } else {
-          this.gatewayService.save(this.gateway).subscribe(x =>
-            this.gateway.uuid = x);
+          this.gatewayService.save(this.gateway).subscribe( i =>
+            this.gateway.uuid = i);
         }
 
         this.saveMode = false;
         this.formGroup.disable();
       } else {
-        this.formGroup.controls['nameFormControl'].setErrors({ 'incorrect': true });
+        this.formGroup.controls.nameFormControl.setErrors({ incorrect: true });
       }
     }
     );
   }
 
   enable(): void {
-    this.saveMode = true
+    this.saveMode = true;
     this.formGroup.enable();
   }
 
@@ -93,20 +95,22 @@ export class GatewayCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.parentRef.remove(this.gateway);
-        this.gatewayService.delete(this.gateway.uuid!).subscribe();
+        if ( this.gateway.uuid !== undefined ) {
+          this.gatewayService.delete(this.gateway.uuid).subscribe();
+        }
       }
     });
   }
 
   getNameErrorMessage(): string {
-    if (this.formGroup.controls["nameFormControl"].hasError('required')) {
+    if (this.formGroup.controls.nameFormControl.hasError('required')) {
       return 'You must enter a value.';
     }
-    return this.formGroup.controls["nameFormControl"].hasError('incorrect') ? 'Name already in use.' : '';
+    return this.formGroup.controls.nameFormControl.hasError('incorrect') ? 'Name already in use.' : '';
   }
 
   goToEdit(): void {
-    this.router.navigateByUrl("/admin/gateway/" + this.gateway.uuid);
+    this.router.navigateByUrl('/admin/gateway/' + this.gateway.uuid);
   }
 
 }

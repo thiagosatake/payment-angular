@@ -68,14 +68,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 })
 export class AppModule { }
 
-export function initializeKeycloak(keycloak: KeycloakService) {
+export function initializeKeycloak(keycloak: KeycloakService): any {
   return () =>
     keycloak.init({
       config: {
         url: 'http://localhost:8080/auth',
         realm: 'my-app',
         clientId: 'pay-angular',
-      },      
+      },
       initOptions: {
         onLoad: 'login-required',
         checkLoginIframe: false

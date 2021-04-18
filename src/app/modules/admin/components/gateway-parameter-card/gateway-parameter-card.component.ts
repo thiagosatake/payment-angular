@@ -28,47 +28,44 @@ export class GatewayParameterCardComponent implements OnInit {
   constructor(public gatewayService: GatewayService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.formGroup.controls['keyFormControl'].setValue(this.gatewayParameter.key);
-    this.formGroup.controls['valueFormControl'].setValue(this.gatewayParameter.value);
-  
+    this.formGroup.controls.keyFormControl.setValue(this.gatewayParameter.key);
+    this.formGroup.controls.valueFormControl.setValue(this.gatewayParameter.value);
   }
 
   refresh(): void {
     this.saveMode = false;
     this.formGroup.disable();
-  
   }
 
   save(): void {
 
-    this.gatewayParameter.key = this.formGroup.controls["keyFormControl"].value;
-    this.gatewayParameter.value = this.formGroup.controls["valueFormControl"].value;
+    this.gatewayParameter.key = this.formGroup.controls.keyFormControl.value;
+    this.gatewayParameter.value = this.formGroup.controls.valueFormControl.value;
 
   }
 
   enable(): void {
-    this.saveMode = true
+    this.saveMode = true;
     this.formGroup.enable();
-  
   }
 
   delete(): void {
     const dialogRef = this.dialog.open(DialogDeleteConfirmationComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      
+      console.log(result);
     });
   }
 
   getKeyErrorMessage(): string {
-    if (this.formGroup.controls["keyFormControl"].hasError('required')) {
+    if (this.formGroup.controls.keyFormControl.hasError('required')) {
       return 'You must enter a value.';
     }
-    return this.formGroup.controls["keyFormControl"].hasError('incorrect') ? 'Name already in use.' : '';
+    return this.formGroup.controls.keyFormControl.hasError('incorrect') ? 'Name already in use.' : '';
   }
 
   getValueErrorMessage(): string {
-    return this.formGroup.controls["valueFormControl"].hasError('required') ? 'You must enter a value.' : '';
+    return this.formGroup.controls.valueFormControl.hasError('required') ? 'You must enter a value.' : '';
   }
 
 }
