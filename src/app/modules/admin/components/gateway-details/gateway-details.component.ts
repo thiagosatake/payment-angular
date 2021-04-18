@@ -47,7 +47,7 @@ export class GatewayDetailsComponent implements OnInit {
   }
 
   createNewGatewayDetailCard(): void {
-    const newGatewayParameter: GatewayParameter = { key: '', value: '' };
+    const newGatewayParameter: GatewayParameter = { uuid: '---', key: '', value: '' };
     this.createComponent(newGatewayParameter);
   }
 
@@ -59,6 +59,7 @@ export class GatewayDetailsComponent implements OnInit {
 
     childComponent.parentRef = this;
 
+    childComponent.gatewayParameter.uuid = gatewayParameter.uuid;
     childComponent.gatewayParameter.key = gatewayParameter.key;
     childComponent.gatewayParameter.value = gatewayParameter.value;
 
@@ -70,7 +71,7 @@ export class GatewayDetailsComponent implements OnInit {
     if (this.VCR.length < 1) { return; }
 
     const vcrIndex = this.componentsReferences.findIndex(
-      x => x.instance.gatewayParameter.key === gatewayParameter.key
+      x => x.instance.gatewayParameter.uuid === gatewayParameter.uuid
     );
 
     // removing component from container

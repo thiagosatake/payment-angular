@@ -8,11 +8,11 @@
 				<mat-form-field>
 					<mat-label>Key</mat-label>
 					<input matInput required formControlName="keyFormControl" >
-					<mat-error *ngIf="formGroup.controls['keyFormControl'].invalid">
+					<mat-error *ngIf="formGroup.controls.keyFormControl.invalid">
 						{{getKeyErrorMessage()}}                   
 					</mat-error>
 				</mat-form-field>
-
+				<mat-card-subtitle><small>{{gatewayParameter.uuid}}</small></mat-card-subtitle>
 			</mat-card-title>
 		</mat-card-header>
 
@@ -21,7 +21,7 @@
 			<mat-form-field class="full-width">
 				<mat-label>Value</mat-label>
 				<input matInput required formControlName="valueFormControl" >
-				<mat-error *ngIf="formGroup.controls['valueFormControl'].invalid">
+				<mat-error *ngIf="formGroup.controls.valueFormControl.invalid">
 					{{getValueErrorMessage()}}                   
 				</mat-error>
 			</mat-form-field>
@@ -36,11 +36,12 @@
                 </span>
             </button>
 
-            <button mat-button (click)="save()" *ngIf="saveMode" [disabled]="formGroup.controls['keyFormControl'].invalid" >
-                <span class="material-icons">
-                    save
-                </span>
-            </button>
+			<button mat-button (click)="save()" *ngIf="saveMode"
+				[disabled]="( formGroup.controls.keyFormControl.invalid || formGroup.controls.valueFormControl.invalid )">
+				<span class="material-icons">
+					save
+				</span>
+			</button>
 
             <button mat-button (click)="enable()" *ngIf="!saveMode">
                 <span class="material-icons">

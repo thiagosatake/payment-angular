@@ -5,6 +5,7 @@ import { Observable, EMPTY } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { retry, catchError, map } from 'rxjs/operators';
 import { Gateway } from '../models/gateway.model';
+import { GatewayParameter } from '../models/gateway-parameter.model';
 
 @Injectable({
   providedIn: 'root'
@@ -63,7 +64,7 @@ export class GatewayService {
   }
 
   getDetails(uuid: string): Observable<Gateway> {
-    return this.http.get(this.baseGatewayUrl + '/details/' + uuid, {
+    return this.http.get(this.baseGatewayUrl + '/' + uuid + '/details/', {
       headers: new HttpHeaders(),
       params: new HttpParams()
     }).pipe(
@@ -84,14 +85,35 @@ export class GatewayService {
     );
   }
 
-
   delete(uuid: string): Observable<any> {
     return this.http.delete(this.baseGatewayUrl + '/' + uuid , {
       headers: new HttpHeaders(),
       params: new HttpParams()
     }).pipe(
       retry(0),
-      map((response: any) => { this.showMessage('Unable do save Gateway.', false); return response; }),
+      map((response: any) => { this.showMessage('Gateway deleted successfully!', false); return response; }),
+      catchError(e => this.errorHandler(e))
+    );
+  }
+
+  saveParameter(uuid: string, gatewayParameter: GatewayParameter): Observable<any> {
+    const body = JSON.stringify(gatewayParameter);
+    return this.http.put(this.baseGatewayUrl + '/' + uuid + '/configurations/save', body, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' })
+    }).pipe(
+      retry(0),
+      map((response: any) => { this.showMessage('Gateway Configuration has been save successfully!', false); return response; }),
+      catchError(e => this.errorHandler(e))
+    );
+  }
+
+  deleteParameter(uuid: string): Observable<any> {
+    return this.http.delete(this.baseGatewayUrl + '/configurations/' + uuid + '/remove' , {
+      headers: new HttpHeaders(),
+      params: new HttpParams()
+    }).pipe(
+      retry(0),
+      map((response: any) => { this.showMessage('Gateway Configuration deleted successfully!', false); return response; }),
       catchError(e => this.errorHandler(e))
     );
   }

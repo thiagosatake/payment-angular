@@ -7,7 +7,7 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Gateway Name</mat-label>
                     <input matInput required formControlName="nameFormControl" >
-                    <mat-error *ngIf="formGroup.controls['nameFormControl'].invalid">
+                    <mat-error *ngIf="formGroup.controls.nameFormControl.invalid">
                         {{getNameErrorMessage()}}                   
                     </mat-error>
                 </mat-form-field>

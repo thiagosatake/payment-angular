@@ -19,7 +19,7 @@ export class GatewayParameterCardComponent implements OnInit {
   });
 
   @Input()
-  public gatewayParameter: GatewayParameter = { key: '', value: ''};
+  public gatewayParameter: GatewayParameter = { uuid: '---', key: '', value: ''};
   public parentRef!: GatewayDetailsComponent;
 
   saveMode = false;
@@ -30,6 +30,13 @@ export class GatewayParameterCardComponent implements OnInit {
   ngOnInit(): void {
     this.formGroup.controls.keyFormControl.setValue(this.gatewayParameter.key);
     this.formGroup.controls.valueFormControl.setValue(this.gatewayParameter.value);
+
+    if (this.gatewayParameter.key !== '') {
+      this.saveMode = false;
+      this.formGroup.disable();
+    } else {
+      this.saveMode = true;
+    }
   }
 
   refresh(): void {
@@ -42,6 +49,19 @@ export class GatewayParameterCardComponent implements OnInit {
     this.gatewayParameter.key = this.formGroup.controls.keyFormControl.value;
     this.gatewayParameter.value = this.formGroup.controls.valueFormControl.value;
 
+    if (this.gatewayParameter.uuid === '---') {
+      this.gatewayParameter.uuid = undefined;
+      this.gatewayService.saveParameter(this.parentRef.uuid, this.gatewayParameter).subscribe(() =>
+        this.parentRef.loadGatewayParameterCards()
+      );
+    } else {
+      this.gatewayService.saveParameter(this.parentRef.uuid, this.gatewayParameter).subscribe( i =>
+        this.gatewayParameter.uuid = i
+      );
+    }
+    this.saveMode = false;
+    this.formGroup.disable();
+
   }
 
   enable(): void {
@@ -53,8 +73,14 @@ export class GatewayParameterCardComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogDeleteConfirmationComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if (result) {
+        this.parentRef.remove(this.gatewayParameter);
+        if (this.gatewayParameter.uuid !== undefined) {
+          this.gatewayService.deleteParameter(this.gatewayParameter.uuid).subscribe();
+        }
+      }
     });
+
   }
 
   getKeyErrorMessage(): string {
