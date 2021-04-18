@@ -20,7 +20,7 @@
 
 			<mat-form-field class="full-width">
 				<mat-label>Value</mat-label>
-				<input matInput required formControlName="valueFormControl" >
+				<textarea matInput rows="2" class="text-area" formControlName="valueFormControl"></textarea>
 				<mat-error *ngIf="formGroup.controls.valueFormControl.invalid">
 					{{getValueErrorMessage()}}                   
 				</mat-error>

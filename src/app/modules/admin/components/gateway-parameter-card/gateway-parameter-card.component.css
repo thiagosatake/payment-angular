@@ -7,6 +7,10 @@
     margin: 12px;
 }
 
+.text-area {
+    resize: none;
+}
+
 .full-width {
     width: 100%;
 }
