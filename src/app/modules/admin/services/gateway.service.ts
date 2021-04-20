@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from '../../../../environments/environment';
 import { Observable, EMPTY } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { retry, catchError, map } from 'rxjs/operators';
+import { retry, catchError, map, defaultIfEmpty } from 'rxjs/operators';
 import { Gateway } from '../models/gateway.model';
 import { GatewayParameter } from '../models/gateway-parameter.model';
 
@@ -37,7 +37,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => response),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -48,7 +49,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => response ),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -59,7 +61,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => response),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -70,7 +73,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => response),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -81,7 +85,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => response),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -92,7 +97,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => { this.showMessage('Gateway has been save successfully!', false); return response; }),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -103,7 +109,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => { this.showMessage('Gateway deleted successfully!', false); return response; }),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -114,7 +121,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => { this.showMessage('Gateway Configuration has been save successfully!', false); return response; }),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
@@ -125,7 +133,8 @@ export class GatewayService {
     }).pipe(
       retry(0),
       map((response: any) => { this.showMessage('Gateway Configuration deleted successfully!', false); return response; }),
-      catchError(e => this.errorHandler(e))
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
     );
   }
 
