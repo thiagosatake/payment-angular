@@ -74,6 +74,17 @@ export class GatewayService {
     );
   }
 
+  getParameter(uuid: string): Observable<GatewayParameter> {
+    return this.http.get(this.baseGatewayUrl + '/configuration/' + uuid , {
+      headers: new HttpHeaders(),
+      params: new HttpParams()
+    }).pipe(
+      retry(0),
+      map((response: any) => response),
+      catchError(e => this.errorHandler(e))
+    );
+  }
+
   save(gateway: Gateway): Observable<any> {
     const body = JSON.stringify(gateway);
     return this.http.put(this.baseGatewayUrl + '/save', body, {

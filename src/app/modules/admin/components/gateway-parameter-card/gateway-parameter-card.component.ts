@@ -42,6 +42,15 @@ export class GatewayParameterCardComponent implements OnInit {
   refresh(): void {
     this.saveMode = false;
     this.formGroup.disable();
+    if ( this.gatewayParameter.uuid !== undefined ){
+      this.gatewayService.getParameter(this.gatewayParameter.uuid).subscribe(
+        data => {
+          this.gatewayParameter = data;
+          this.formGroup.controls.keyFormControl.setValue(this.gatewayParameter.key);
+          this.formGroup.controls.valueFormControl.setValue(this.gatewayParameter.value);
+        }
+      );
+    }
   }
 
   save(): void {
