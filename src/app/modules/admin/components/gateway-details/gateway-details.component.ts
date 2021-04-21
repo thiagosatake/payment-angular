@@ -3,6 +3,7 @@ import { Gateway } from '../../models/gateway.model';
 import { GatewayParameter } from '../../models/gateway-parameter.model';
 import { GatewayService } from '../../services/gateway.service';
 import { GatewayParameterCardComponent } from '../gateway-parameter-card/gateway-parameter-card.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,7 @@ export class GatewayDetailsComponent implements OnInit {
   gateway: Gateway | undefined;
 
 
-  constructor(public gatewayService: GatewayService, private CFR: ComponentFactoryResolver) { }
+  constructor(public gatewayService: GatewayService, private CFR: ComponentFactoryResolver, private router: Router) { }
 
   ngOnInit(): void {
     this.loadGatewayParameterCards();
@@ -85,6 +86,10 @@ export class GatewayDetailsComponent implements OnInit {
       x => x.instance.gatewayParameter.uuid !== gatewayParameter.uuid
     );
 
+  }
+
+  goAdminSetup(): void {
+    this.router.navigateByUrl("/admin/setup");
   }
 
 }
