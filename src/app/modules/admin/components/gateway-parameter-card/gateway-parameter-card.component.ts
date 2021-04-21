@@ -5,7 +5,6 @@ import { GatewayService } from '../../services/gateway.service';
 import { GatewayDetailsComponent } from '../gateway-details/gateway-details.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogDeleteConfirmationComponent } from '../../../../shared/components/dialog-delete-confirmation/dialog-delete-confirmation.component';
-import { defaultIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-gateway-parameter-card',
@@ -25,6 +24,7 @@ export class GatewayParameterCardComponent implements OnInit {
 
   saveMode = false;
   keyIsUnique = true;
+  gatewayKeyIsGatewayUnique = true;
 
   constructor(public gatewayService: GatewayService, public dialog: MatDialog) { }
 
@@ -59,17 +59,31 @@ export class GatewayParameterCardComponent implements OnInit {
     this.gatewayParameter.key = this.formGroup.controls.keyFormControl.value;
     this.gatewayParameter.value = this.formGroup.controls.valueFormControl.value;
 
-    if (this.gatewayParameter.uuid === '---') {
-      this.gatewayParameter.uuid = undefined;
-      this.gatewayService.saveParameter(this.parentRef.uuid, this.gatewayParameter)
-      .subscribe( () => this.parentRef.loadGatewayParameterCards() );
-    } else {
-      this.gatewayService.saveParameter(this.parentRef.uuid, this.gatewayParameter).subscribe( i =>
-        this.gatewayParameter.uuid = i
-      );
-    }
-    this.saveMode = false;
-    this.formGroup.disable();
+    this.gatewayService.getParameterByGatewayAndKey(this.parentRef.uuid, this.gatewayParameter.key).subscribe(x => {
+
+      this.gatewayKeyIsGatewayUnique = (x == null || this.gatewayParameter.uuid === x.uuid);
+
+      console.log( "Vejam: " + this.gatewayKeyIsGatewayUnique );
+
+      if (this.gatewayKeyIsGatewayUnique) {
+
+        if (this.gatewayParameter.uuid === '---') {
+          this.gatewayParameter.uuid = undefined;
+          this.gatewayService.saveParameter(this.parentRef.uuid, this.gatewayParameter)
+          .subscribe( () => this.parentRef.loadGatewayParameterCards() );
+        } else {
+          this.gatewayService.saveParameter(this.parentRef.uuid, this.gatewayParameter).subscribe( i =>
+            this.gatewayParameter.uuid = i
+          );
+        }
+
+        this.saveMode = false;
+        this.formGroup.disable();
+      } else {
+        this.formGroup.controls.keyFormControl.setErrors({ incorrect: true });
+      }
+
+    });
 
   }
 

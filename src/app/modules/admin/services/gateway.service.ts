@@ -138,4 +138,17 @@ export class GatewayService {
     );
   }
 
+
+  getParameterByGatewayAndKey(uuid: string, key: string): Observable<any> {
+    return this.http.get(this.baseGatewayUrl + '/' + uuid + '/configurations/key/' + key  , {
+      headers: new HttpHeaders(),
+      params: new HttpParams()
+    }).pipe(
+      retry(0),
+      map((response: any) => response),
+      catchError(e => this.errorHandler(e)),
+      defaultIfEmpty()
+    );
+  }
+
 }
