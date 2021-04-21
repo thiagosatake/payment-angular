@@ -89,7 +89,7 @@ export class GatewayDetailsComponent implements OnInit {
   }
 
   goAdminSetup(): void {
-    this.router.navigateByUrl("/admin/setup");
+    this.router.navigateByUrl('/admin/setup');
   }
 
 }
