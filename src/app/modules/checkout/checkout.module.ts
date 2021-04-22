@@ -1,16 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SibsCardComponent } from './sibs-card/sibs-card.component';
-import { CheckoutDetailsComponent } from './checkout-details/checkout-details.component';
 
-import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+import { CheckoutRoutingModule } from './checkout-routing.module';
+
+import { SetupComponent } from './pages/setup/setup.component';
+import { HomeComponent } from './pages/home/home.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { LinkCardComponent } from './components/link-card/link-card.component';
+import { PrepareCheckoutComponent } from './components/prepare-checkout/prepare-checkout.component';
+
 
 @NgModule({
-  declarations: [SibsCardComponent, CheckoutDetailsComponent],
-  exports: [SibsCardComponent, CheckoutDetailsComponent],
+  declarations: [
+    SetupComponent,
+    HomeComponent,
+    CheckoutComponent,
+    LinkCardComponent,
+    PrepareCheckoutComponent
+  ],
   imports: [
     CommonModule,
-    MatCardModule
+    CheckoutRoutingModule,
+    MatTabsModule,
+    MatSidenavModule
   ]
 })
 export class CheckoutModule { }

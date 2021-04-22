@@ -9,11 +9,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 import { CoreModule } from './core/core.module';
-import { CheckoutModule } from './modules/checkout/checkout.module';
 import { PaymentModule } from './modules/payment/payment.module';
 import { PurchaseModule } from './modules/purchase/purchase.module';
 
-import { CheckoutComponent } from './modules/checkout/checkout.component';
 import { HomeComponent } from './modules/home/home.component';
 import { PaymentComponent } from './modules/payment/payment.component';
 import { PurchaseComponent } from './modules/purchase/purchase.component';
@@ -31,7 +29,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
-    CheckoutComponent,
     PaymentComponent,
     PurchaseComponent,
     HomeComponent
@@ -49,7 +46,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    CheckoutModule,
     PaymentModule,
     PurchaseModule,
     BrowserAnimationsModule,

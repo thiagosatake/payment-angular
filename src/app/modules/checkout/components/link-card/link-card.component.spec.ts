@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CheckoutDetailsComponent } from './checkout-details.component';
+import { LinkCardComponent } from './link-card.component';
 
-describe('CheckoutDetailsComponent', () => {
-  let component: CheckoutDetailsComponent;
-  let fixture: ComponentFixture<CheckoutDetailsComponent>;
+describe('LinkCardComponent', () => {
+  let component: LinkCardComponent;
+  let fixture: ComponentFixture<LinkCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CheckoutDetailsComponent ]
+      declarations: [ LinkCardComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckoutDetailsComponent);
+    fixture = TestBed.createComponent(LinkCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

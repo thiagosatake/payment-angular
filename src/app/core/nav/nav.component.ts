@@ -15,28 +15,32 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
-  toggle() {
+
+  toggle(): void {
     this.sidenav.toggle();
   }
 
-  goHome() {
-    this.router.navigateByUrl("/home");
+  goHome(): void {
+    this.router.navigateByUrl('/home');
   }
 
-  goPurchase() {
-    this.router.navigateByUrl("/purchase");
+  goPurchase(): void {
+    this.router.navigateByUrl('/purchase');
   }
 
-  goAdminDashboard(){
-    this.router.navigateByUrl("/admin/dashboard");
+  goAdminDashboard(): void {
+    this.router.navigateByUrl('/admin/dashboard');
   }
 
-  goAdminSetup() {
-    this.router.navigateByUrl("/admin/setup");
+  goAdminSetup(): void {
+    this.router.navigateByUrl('/admin/setup');
   }
 
-  goLogoff() {
+  goCheckoutSetup(): void {
+    this.router.navigateByUrl('/checkout/setup');
+  }
+
+  goLogoff(): void {
     this.keycloakService.logout();
   }
 
