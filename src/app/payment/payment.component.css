@@ -1,0 +1,22 @@
+.spacer {
+    flex: 1 auto;
+}
+
+.content {
+    height: 100%; 
+}
+
+.payment-container {
+    float: left !important;
+    height: 100% !important;;
+    width: 100%;
+}
+
+.menu {
+    height: 30px;
+    font-size: 15px;
+}
+
+.menu-mat-icon {
+    font-size: 15px;
+}

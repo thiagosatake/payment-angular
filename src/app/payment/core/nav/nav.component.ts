@@ -21,23 +21,23 @@ export class NavComponent implements OnInit {
   }
 
   goHome(): void {
-    this.router.navigateByUrl('/home');
+    this.router.navigateByUrl('/payment/home');
   }
 
   goPurchase(): void {
-    this.router.navigateByUrl('/purchase');
+    this.router.navigateByUrl('/payment/purchase');
   }
 
   goAdminDashboard(): void {
-    this.router.navigateByUrl('/admin/dashboard');
+    this.router.navigateByUrl('/payment/admin/dashboard');
   }
 
   goAdminSetup(): void {
-    this.router.navigateByUrl('/admin/setup');
+    this.router.navigateByUrl('/payment/admin/setup');
   }
 
   goCheckoutSetup(): void {
-    this.router.navigateByUrl('/checkout/setup');
+    this.router.navigateByUrl('/payment/checkout/setup');
   }
 
   goLogoff(): void {

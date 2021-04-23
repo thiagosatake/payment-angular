@@ -110,7 +110,7 @@ export class GatewayCardComponent implements OnInit {
   }
 
   goToEdit(): void {
-    this.router.navigateByUrl('/admin/gateway/' + this.gateway.uuid);
+    this.router.navigateByUrl('/payment/admin/gateway/' + this.gateway.uuid);
   }
 
 }

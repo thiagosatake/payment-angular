@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+
 
 import { CheckoutRoutingModule } from './checkout-routing.module';
 
@@ -25,7 +30,11 @@ import { PrepareCheckoutComponent } from './components/prepare-checkout/prepare-
     CommonModule,
     CheckoutRoutingModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class CheckoutModule { }

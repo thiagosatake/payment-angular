@@ -16,8 +16,21 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, ProfileComponent, NavComponent, UserInfoComponent, BreadcrumbComponent],
-  exports: [HeaderComponent, FooterComponent, ProfileComponent, NavComponent, BreadcrumbComponent],
+  declarations: [
+    FooterComponent,
+    HeaderComponent,
+    ProfileComponent,
+    NavComponent,
+    UserInfoComponent,
+    BreadcrumbComponent
+  ],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+    ProfileComponent,
+    NavComponent,
+    BreadcrumbComponent
+  ],
   imports: [
     CommonModule,
     MatToolbarModule,
