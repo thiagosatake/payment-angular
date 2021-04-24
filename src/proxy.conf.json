@@ -1,0 +1,10 @@
+{
+  "/proxy/payment": {
+    "target": "http://localhost:9001",
+    "secure": false,
+    "pathRewrite": {
+      "^/proxy/payment": "/payment"
+    },
+    "changeOrigin": false
+  }
+}

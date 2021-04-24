@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { environment } from '../../../../../environments/environment';
 import { Observable, EMPTY } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { retry, catchError, map, defaultIfEmpty } from 'rxjs/operators';
@@ -12,7 +11,7 @@ import { GatewayParameter } from '../models/gateway-parameter.model';
 })
 export class GatewayService {
 
-  baseGatewayUrl = `${environment.apiBaseUrl}${environment.gatewayV1Path}`;
+  baseGatewayUrl = '/proxy/payment/api/v1/gateways';
 
   constructor(private snackBar: MatSnackBar, private http: HttpClient) { }
 
