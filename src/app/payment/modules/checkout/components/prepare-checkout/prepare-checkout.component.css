@@ -1,6 +1,17 @@
-.prepare-checkout-gateway-card {
+.prepare-checkout-search-card {
     float: inline;
-    height: 140px;
+    height: 60px;
     padding: 20px;
     margin: 12px;
+}
+
+.prepare-checkout-gateway-card {
+    float: inline;
+    height: 100px;
+    padding: 20px;
+    margin: 12px;
+}
+
+.full-width {
+    width: 250px;
 }

@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 import { CheckoutRoutingModule } from './checkout-routing.module';
@@ -34,7 +36,9 @@ import { PrepareCheckoutComponent } from './components/prepare-checkout/prepare-
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    MatFormFieldModule
   ]
 })
 export class CheckoutModule { }

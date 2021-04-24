@@ -1,13 +1,27 @@
+<mat-card class="prepare-checkout-search-card">
+
+    <mat-card-content>
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Select an Gateway:</mat-label>
+            <mat-select [(value)]="selected" (selectionChange)="changeGateway()" >
+                <mat-option *ngFor="let lC of loadedGateway" [value]="lC.uuid">
+                    {{lC.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </mat-card-content>
+    
+</mat-card>
+
 <mat-card class="prepare-checkout-gateway-card">
     <mat-card-header>
         <div mat-card-avatar class="header-image"></div>
-            <mat-card-title>Teste</mat-card-title>
-            <mat-card-subtitle><small>Teste</small></mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-			Teste
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-button>Back</button>
-        </mat-card-actions>
+        <mat-card-title>{{selectedGateway.name}}</mat-card-title>
+        <mat-card-subtitle><small>{{selectedGateway.uuid}}</small></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        {{selectedGateway.description}}
+    </mat-card-content>
+
 </mat-card>
