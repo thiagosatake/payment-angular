@@ -1,0 +1,33 @@
+.link-card {
+    float: left;
+    width: 295px;
+    height: 380px;
+    padding: 20px;
+    margin: 12px;
+}
+
+.my-text-area {
+    resize: none;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.material-icons{
+    padding: 10px;
+}
+
+.mat-form-field-currency {
+    width: 40%;
+    margin-right: 20px;
+    float: left;
+}
+
+.mat-form-field-payment-type {
+    width: 45%;
+}
+
+.my-text-area {
+    resize: none;
+}

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -9,7 +10,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 
 import { CheckoutRoutingModule } from './checkout-routing.module';
 
@@ -29,6 +29,7 @@ import { PrepareCheckoutComponent } from './components/prepare-checkout/prepare-
     PrepareCheckoutComponent
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule,
     CheckoutRoutingModule,
     MatTabsModule,
@@ -39,6 +40,9 @@ import { PrepareCheckoutComponent } from './components/prepare-checkout/prepare-
     MatIconModule,
     MatSelectModule,
     MatFormFieldModule
+  ],
+  bootstrap: [
+    LinkCardComponent
   ]
 })
 export class CheckoutModule { }
