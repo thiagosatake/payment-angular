@@ -42,6 +42,8 @@ export class PrepareCheckoutComponent implements OnInit {
   }
 
   loadLinkCards(): void {
+    this.VCR.clear();
+    this.componentsReferences = new Array<ComponentRef<LinkCardComponent>>();
     this.createNewLinkCard();
   }
 
